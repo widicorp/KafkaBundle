@@ -1,6 +1,9 @@
 # KafkaBundle
 
 [![StyleCI](https://styleci.io/repos/126491151/shield?branch=master)](https://styleci.io/repos/126491151)
+[![Latest Stable Version](https://poser.pugx.org/widicorp/kafka-bundle/v/stable)](https://packagist.org/packages/widicorp/kafka-bundle)
+[![Total Downloads](https://poser.pugx.org/widicorp/kafka-bundle/downloads)](https://packagist.org/packages/widicorp/kafka-bundle)
+[![License](https://poser.pugx.org/widicorp/kafka-bundle/license)](https://packagist.org/packages/widicorp/kafka-bundle)
 
 This is a fork from Md6Web Kafka Bundle to introduce new features and supports Symfony 4.
 
