@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Widicorp KafkaBundle package.
+ *
+ * (c) Widicorp <info@widitrade.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Widicorp\KafkaBundle\Helper;
 
 use Widicorp\KafkaBundle\Event\KafkaEvent;
@@ -7,10 +16,7 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
- * Trait NotifyEventTrait
- * @package Widicorp\KafkaBundle
- *
- * A class to handle notifications
+ * Trait NotifyEventTrait.
  */
 trait NotifyEventTrait
 {
@@ -25,11 +31,9 @@ trait NotifyEventTrait
     protected $events = [];
 
     /**
-     * Set an event dispatcher to notify a consumer or a producer action
+     * Set an event dispatcher to notify a consumer or a producer action.
      *
      * @param EventDispatcherInterface $eventDispatcher The eventDispatcher object, which implements the notify method
-     *
-     * @return void
      */
     public function setEventDispatcher(EventDispatcherInterface $eventDispatcher)
     {
@@ -103,6 +107,7 @@ trait NotifyEventTrait
 
     /**
      * @param string $key
+     *
      * @return null|KafkaEvent
      */
     protected function getEvent(string $key)

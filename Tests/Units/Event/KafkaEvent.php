@@ -1,20 +1,24 @@
 <?php
+
+/*
+ * This file is part of the Widicorp KafkaBundle package.
+ *
+ * (c) Widicorp <info@widitrade.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Widicorp\KafkaBundle\Tests\Units\Event;
 
 use atoum\test;
 use Widicorp\KafkaBundle\Event\KafkaEvent as Base;
 
 /**
- * Class EventLog
- * @package Widicorp\KafkaBundle\Tests\Units\Event
- *
- * A class to test the EventLog
+ * Class EventLog.
  */
 class KafkaEvent extends test
 {
-    /**
-     * @return void
-     */
     public function testShouldGetACorrectEventAfterConstruction()
     {
         $this

@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Widicorp KafkaBundle package.
+ *
+ * (c) Widicorp <info@widitrade.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Widicorp\KafkaBundle\Tests\Units\DependencyInjection;
 
 use Widicorp\KafkaBundle\DependencyInjection\WidicorpKafkaExtension as TestedClass;
@@ -10,16 +19,10 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 /**
- * Class WidicorpKafkaExtension
- * @package Widicorp\KafkaBundle\Tests\Units\DependencyInjection
- *
- * A class to test configuration loading
+ * Class WidicorpKafkaExtension.
  */
 class WidicorpKafkaExtension extends BaseUnitTest
 {
-    /**
-     * @return void
-     */
     public function testShouldGetACorrectConfigurationForConsumer()
     {
         $container = $this->getContainerForConfiguration('config');
@@ -33,9 +36,6 @@ class WidicorpKafkaExtension extends BaseUnitTest
         ;
     }
 
-    /**
-     * @return void
-     */
     public function testShouldGetACorrectConfigurationForProducer()
     {
         $container = $this->getContainerForConfiguration('config');

@@ -1,5 +1,7 @@
 # KafkaBundle
 
+[![StyleCI](https://styleci.io/repos/126491151/shield?branch=master)](https://styleci.io/repos/126491151)
+
 This is a fork from Md6Web Kafka Bundle to introduce new features and supports Symfony 4.
 
 Configuration and use of KafkaBundle are based on the [RdKafka extension](https://arnaud-lb.github.io/php-rdkafka/phpdoc/book.rdkafka.html). 

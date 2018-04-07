@@ -1,12 +1,18 @@
 <?php
 
+/*
+ * This file is part of the Widicorp KafkaBundle package.
+ *
+ * (c) Widicorp <info@widitrade.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Widicorp\KafkaBundle\Exceptions;
 
 /**
- * Class EntityNotSetException
- * @package Widicorp\KafkaBundle\Exceptions
- *
- * A class to handle exceptions when trying to use an entity not set
+ * Class EntityNotSetException.
  */
 class EntityNotSetException extends \Exception
 {

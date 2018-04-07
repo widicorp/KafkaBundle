@@ -1,5 +1,15 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
+
+/*
+ * This file is part of the Widicorp KafkaBundle package.
+ *
+ * (c) Widicorp <info@widitrade.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Widicorp\KafkaBundle\Tests\Units\Manager;
 
@@ -8,16 +18,10 @@ use Widicorp\KafkaBundle\Manager\ConsumerManager as Base;
 use Widicorp\KafkaBundle\Tests\Units\BaseUnitTest;
 
 /**
- * Class ConsumerManager
- * @package Widicorp\KafkaBundle\Tests\Units\Consumer
- *
- * A class to test the consumer manager
+ * Class ConsumerManager.
  */
 class ConsumerManager extends BaseUnitTest
 {
-    /**
-     * @return void
-     */
     public function testShouldConsumeMessages()
     {
         $this
@@ -42,9 +46,6 @@ class ConsumerManager extends BaseUnitTest
         ;
     }
 
-    /**
-     * @return void
-     */
     public function testShouldCommitMessageAfterConsumingAndMessage()
     {
         $this
@@ -70,9 +71,6 @@ class ConsumerManager extends BaseUnitTest
         ;
     }
 
-    /**
-     * @return void
-     */
     public function testShouldCommitMessageWhenConsumingMessage()
     {
         $this
@@ -96,9 +94,6 @@ class ConsumerManager extends BaseUnitTest
         ;
     }
 
-    /**
-     * @return void
-     */
     public function testShouldInformThatTheresNoMoreMessage()
     {
         $this
@@ -120,9 +115,6 @@ class ConsumerManager extends BaseUnitTest
         ;
     }
 
-    /**
-     * @return void
-     */
     public function testShouldInformThatTheresATimeOut()
     {
         $this
@@ -145,9 +137,6 @@ class ConsumerManager extends BaseUnitTest
         ;
     }
 
-    /**
-     * @return void
-     */
     public function testShouldNotCommitMessageNeitherSendEventIfError()
     {
         $this
@@ -167,9 +156,6 @@ class ConsumerManager extends BaseUnitTest
         ;
     }
 
-    /**
-     * @return void
-     */
     public function testShouldConsumeMessagesWithoutSendingEvent()
     {
         $this
@@ -196,6 +182,7 @@ class ConsumerManager extends BaseUnitTest
      * @param \RdKafka\KafkaConsumer $consumer
      * @param bool                   $eventDispatcherSet
      * @param null                   $eventDispatcherMock
+     *
      * @return Base
      */
     protected function getReadyBase(\RdKafka\KafkaConsumer $consumer, bool $eventDispatcherSet = false, $eventDispatcherMock = null): Base

@@ -1,14 +1,20 @@
 <?php
 
+/*
+ * This file is part of the Widicorp KafkaBundle package.
+ *
+ * (c) Widicorp <info@widitrade.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Widicorp\KafkaBundle\Manager;
 
 use Widicorp\KafkaBundle\Handler\MessageHandlerInterface;
 
 /**
- * Class ConsumerManager
- * @package Widicorp\KafkaBundle
- *
- * A class to consume messages with topics
+ * Class ConsumerManager.
  */
 class ConsumerManager
 {
@@ -42,8 +48,6 @@ class ConsumerManager
 
     /**
      * @param array $topicNames
-     *
-     * @return void
      */
     public function addTopic(array $topicNames)
     {
@@ -68,6 +72,7 @@ class ConsumerManager
 
     /**
      * @param bool $autoCommit
+     *
      * @return \RdKafka\Message
      */
     public function consume(bool $autoCommit = true): \RdKafka\Message
@@ -75,9 +80,6 @@ class ConsumerManager
         return $this->consumer->consume($this->timeoutConsumingQueue);
     }
 
-    /**
-     * @return void
-     */
     public function commit()
     {
         $this->consumer->commit($this->message);
@@ -94,7 +96,7 @@ class ConsumerManager
     /**
      * @return MessageHandlerInterface
      */
-    public function getMessageHandler() : MessageHandlerInterface
+    public function getMessageHandler(): MessageHandlerInterface
     {
         return $this->messageHandler;
     }

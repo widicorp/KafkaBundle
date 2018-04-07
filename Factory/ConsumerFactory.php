@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Widicorp KafkaBundle package.
+ *
+ * (c) Widicorp <info@widitrade.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Widicorp\KafkaBundle\Factory;
 
 use Widicorp\KafkaBundle\Handler\MessageHandlerInterface;
@@ -7,7 +16,7 @@ use Widicorp\KafkaBundle\Manager\ConsumerManager;
 use Widicorp\KafkaBundle\Helper\PartitionAssignment;
 
 /**
- * Class ConsumerFactory
+ * Class ConsumerFactory.
  */
 class ConsumerFactory extends AbstractKafkaFactory
 {
@@ -21,7 +30,7 @@ class ConsumerFactory extends AbstractKafkaFactory
         string $consumerClass,
         array $consumerData,
         MessageHandlerInterface $messageHandler
-    ) : ConsumerManager {
+    ): ConsumerManager {
         $consumerManager = new ConsumerManager();
 
         $this->getReadyTopicConf($consumerData['topicConfiguration']);

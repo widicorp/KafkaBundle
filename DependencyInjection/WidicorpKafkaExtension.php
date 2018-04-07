@@ -1,8 +1,16 @@
 <?php
 
+/*
+ * This file is part of the Widicorp KafkaBundle package.
+ *
+ * (c) Widicorp <info@widitrade.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Widicorp\KafkaBundle\DependencyInjection;
 
-use Widicorp\KafkaBundle\Handler\MessageHandlerInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -11,15 +19,13 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\DependencyInjection\Definition;
 
 /**
- * Class WidicorpKafkaExtension
- * @package Widicorp\KafkaBundle\DependencyInjection
- *
- * This is the class that loads and manages your bundle configuration
+ * Class WidicorpKafkaExtension.
  */
 class WidicorpKafkaExtension extends Extension
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
+     *
      * @throws \Symfony\Component\DependencyInjection\Exception\BadMethodCallException
      */
     public function load(array $configs, ContainerBuilder $container)
@@ -39,7 +45,8 @@ class WidicorpKafkaExtension extends Extension
 
     /**
      * @param ContainerBuilder $container
-     * @param array $config
+     * @param array            $config
+     *
      * @throws \Symfony\Component\DependencyInjection\Exception\BadMethodCallException
      */
     protected function loadProducers(ContainerBuilder $container, array $config)
@@ -74,7 +81,7 @@ class WidicorpKafkaExtension extends Extension
 
     /**
      * @param ContainerBuilder $container
-     * @param array $config
+     * @param array            $config
      */
     protected function loadConsumers(ContainerBuilder $container, array $config)
     {
@@ -105,7 +112,7 @@ class WidicorpKafkaExtension extends Extension
 
     /**
      * @param ContainerBuilder $container
-     * @param array $config
+     * @param array            $config
      */
     private function loadCommandLogger(ContainerBuilder $container, array $config)
     {
@@ -121,13 +128,14 @@ class WidicorpKafkaExtension extends Extension
     }
 
     /**
-     * @param array $config
+     * @param array      $config
      * @param Definition $definition
+     *
      * @throws \Symfony\Component\DependencyInjection\Exception\InvalidArgumentException
      */
     protected function setEventDispatcher(array $config, Definition $definition)
     {
-        if ($config['event_dispatcher'] === true) {
+        if (true === $config['event_dispatcher']) {
             $definition->addMethodCall(
                 'setEventDispatcher',
                 [

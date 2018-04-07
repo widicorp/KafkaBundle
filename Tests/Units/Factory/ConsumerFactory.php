@@ -1,26 +1,35 @@
 <?php
 
+/*
+ * This file is part of the Widicorp KafkaBundle package.
+ *
+ * (c) Widicorp <info@widitrade.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Widicorp\KafkaBundle\Tests\Units\Factory;
 
 use Widicorp\KafkaBundle\Tests\Units\BaseUnitTest;
 
 /**
- * Class ConsumerFactory
+ * Class ConsumerFactory.
  */
 class ConsumerFactory extends BaseUnitTest
 {
     public function testGet()
     {
         $consumerClass = 'RdKafka\KafkaConsumer';
-        $consumerData  = [
+        $consumerData = [
             'configuration' => [
-                'group.id' => 'myConsumerGroup'
+                'group.id' => 'myConsumerGroup',
             ],
             'topicConfiguration' => [],
             'timeout_consuming_queue' => 1,
             'topics' => [
-                'test'
-            ]
+                'test',
+            ],
         ];
 
         $this

@@ -1,20 +1,24 @@
 <?php
+
+/*
+ * This file is part of the Widicorp KafkaBundle package.
+ *
+ * (c) Widicorp <info@widitrade.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Widicorp\KafkaBundle\Tests\Units\Manager;
 
 use Widicorp\KafkaBundle\Event\KafkaEvent;
 use Widicorp\KafkaBundle\Tests\Units\BaseUnitTest;
 
 /**
- * Class ProducerManager
- * @package Widicorp\KafkaBundle\Tests\Units\Producer
- *
- * A class to test the producer manager
+ * Class ProducerManager.
  */
 class ProducerManager extends BaseUnitTest
 {
-    /**
-     * @return void
-     */
     public function testShouldProduceAMessage()
     {
         $this
@@ -33,9 +37,6 @@ class ProducerManager extends BaseUnitTest
             ;
     }
 
-    /**
-     * @return void
-     */
     public function testShouldNotProduceAMessageIfPartitionDoesNotExist()
     {
         $eventDispatcherMock = $this->getEventDispatcherMock();
@@ -53,9 +54,6 @@ class ProducerManager extends BaseUnitTest
         ;
     }
 
-    /**
-     * @return void
-     */
     public function testShouldProduceAMessageWithAKey()
     {
         $this
@@ -74,9 +72,6 @@ class ProducerManager extends BaseUnitTest
         ;
     }
 
-    /**
-     * @return void
-     */
     public function testShouldNotifyAnEventWhenProducing()
     {
         $eventDispatcherMock = $this->getEventDispatcherMock();
@@ -96,9 +91,6 @@ class ProducerManager extends BaseUnitTest
             ;
     }
 
-    /**
-     * @return void
-     */
     public function testShouldNotifyAnEventWhenProducingWithError()
     {
         $eventDispatcherMock = $this->getEventDispatcherMock();
@@ -118,9 +110,6 @@ class ProducerManager extends BaseUnitTest
         ;
     }
 
-    /**
-     * @return void
-     */
     public function testShouldNotNotifyAnEventWhenProducingAndEventDispatcherSetToFalse()
     {
         $eventDispatcherMock = $this->getEventDispatcherMock();
@@ -138,9 +127,6 @@ class ProducerManager extends BaseUnitTest
         ;
     }
 
-    /**
-     * @return void
-     */
     public function testShouldThrowAnExceptionWhenSettingLogOnEmptyEntity()
     {
         $this
@@ -153,9 +139,6 @@ class ProducerManager extends BaseUnitTest
             ;
     }
 
-    /**
-     * @return void
-     */
     public function testShouldThrowAnExceptionWhenAddingBrokersOnEmptyEntity()
     {
         $this
@@ -168,9 +151,6 @@ class ProducerManager extends BaseUnitTest
         ;
     }
 
-    /**
-     * @return void
-     */
     public function testShouldThrowAnExceptionWhenAddingTopicsOnEmptyEntity()
     {
         $this
@@ -183,9 +163,6 @@ class ProducerManager extends BaseUnitTest
         ;
     }
 
-    /**
-     * @return void
-     */
     public function testShouldThrowAnExceptionWhenAddingTopicsWithNoBroker()
     {
         $this
@@ -201,9 +178,6 @@ class ProducerManager extends BaseUnitTest
         ;
     }
 
-    /**
-     * @return void
-     */
     public function testShouldThrowAnExceptionWhenAddingTopicsWithNoLogLevel()
     {
         $this

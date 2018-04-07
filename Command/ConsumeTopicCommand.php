@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Widicorp KafkaBundle package.
+ *
+ * (c) Widicorp <info@widitrade.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(ticks=1);
 
 namespace Widicorp\KafkaBundle\Command;
@@ -15,6 +24,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class ConsumeTopicCommand extends ContainerAwareCommand
 {
     protected $shutdown;
+
     protected $logger;
 
     protected function configure()
@@ -37,7 +47,7 @@ class ConsumeTopicCommand extends ContainerAwareCommand
         $memoryMax = $input->getOption('memory-max');
 
         /**
-         * @var ConsumerManager $topicConsumer
+         * @var ConsumerManager
          */
         $topicConsumer = $container->get(sprintf('%s.consumer.%s', $prefixName, $consumer));
         if (!$topicConsumer) {
@@ -46,7 +56,7 @@ class ConsumeTopicCommand extends ContainerAwareCommand
 
         $output->writeln(
             '<comment>Waiting for partition assignment... (make take some time when quickly re-joining the group after 
-leaving it.)' . PHP_EOL . '</comment>'
+leaving it.)'.PHP_EOL.'</comment>'
         );
 
         $this->registerSigHandlers();
@@ -71,20 +81,23 @@ leaving it.)' . PHP_EOL . '</comment>'
                     if ($autoCommit) {
                         $topicConsumer->commit();
                     }
+
                     break;
                 case RD_KAFKA_RESP_ERR__PARTITION_EOF:
                     $output->writeln('<question>No more messages; will wait for more</question>');
                     $topicConsumer->getMessageHandler()->endOfPartitionReached();
+
                     break;
                 case RD_KAFKA_RESP_ERR__TIMED_OUT:
                     $output->writeln('<question>Timed out</question>');
+
                     break;
                 default:
                     throw new \Exception($message->errstr(), $message->err);
                     break;
             }
 
-            if ($memoryMax !== null && memory_get_peak_usage(true) >= $memoryMax) {
+            if (null !== $memoryMax && memory_get_peak_usage(true) >= $memoryMax) {
                 $output->writeln('<question>Memory limit exceeded!</question>');
                 $this->shutdownFn();
             }
@@ -92,7 +105,7 @@ leaving it.)' . PHP_EOL . '</comment>'
             //TODO check shutdown si el tiempo autocomit mayor que el de cola
             if ($this->shutdown) {
                 $output->writeln('<question>Shuting down...</question>');
-                if ($message->err === RD_KAFKA_RESP_ERR_NO_ERROR) {
+                if (RD_KAFKA_RESP_ERR_NO_ERROR === $message->err) {
                     $topicConsumer->commit();
                 }
 

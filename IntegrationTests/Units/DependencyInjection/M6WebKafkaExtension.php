@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Widicorp KafkaBundle package.
+ *
+ * (c) Widicorp <info@widitrade.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Widicorp\KafkaBundle\Tests\Units\DependencyInjection;
 
 use Widicorp\KafkaBundle\DependencyInjection\WidicorpKafkaExtension as Base;
@@ -12,16 +21,10 @@ use Widicorp\KafkaBundle\Manager\ProducerManager;
 use Widicorp\KafkaBundle\Manager\ConsumerManager;
 
 /**
- * Class WidicorpKafkaExtension
- * @package Widicorp\KafkaBundle\Tests\Units\DependencyInjection
- *
- * A class to test real configuration loading
+ * Class WidicorpKafkaExtension.
  */
-class WidicorpKafkaExtension extends BaseUnitTest
+class M6WebKafkaExtension extends BaseUnitTest
 {
-    /**
-     * @return void
-     */
     public function testShouldProduceAMessageAndConsumeItAfter()
     {
         $container = $this->getContainerForConfiguration('config');

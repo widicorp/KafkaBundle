@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Widicorp KafkaBundle package.
+ *
+ * (c) Widicorp <info@widitrade.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Widicorp\KafkaBundle\Manager;
 
 use Widicorp\KafkaBundle\Exceptions\EntityNotSetException;
@@ -10,15 +19,14 @@ use Widicorp\KafkaBundle\Helper\NotifyEventTrait;
 use RdKafka\Topic;
 
 /**
- * Class ProducerManager
- * @package Widicorp\Bundle\KafkaBundle
+ * Class ProducerManager.
  */
 class ProducerManager
 {
     use NotifyEventTrait;
 
     /**
-     * max time in second
+     * max time in second.
      */
     const MAX_TIME_WAITING_QUEUE_EMPTY = 1;
 
@@ -43,7 +51,8 @@ class ProducerManager
     protected $brokers;
 
     /**
-     * event poll timeout in ms
+     * event poll timeout in ms.
+     *
      * @var int
      */
     protected $eventsPollTimeout;
@@ -58,6 +67,7 @@ class ProducerManager
 
     /**
      * @param \RdKafka\Producer $entity
+     *
      * @return ProducerManager
      */
     public function setProducer(\RdKafka\Producer $entity): self
@@ -69,6 +79,7 @@ class ProducerManager
 
     /**
      * @param int $logLevel
+     *
      * @return ProducerManager
      */
     public function setLogLevel(int $logLevel): self
@@ -83,6 +94,7 @@ class ProducerManager
 
     /**
      * @param string $brokers
+     *
      * @return ProducerManager
      */
     public function addBrokers(string $brokers): self
@@ -123,9 +135,8 @@ class ProducerManager
     /**
      * @param string      $message
      * @param string|null $key
-     * @param integer     $partition
+     * @param int         $partition
      *
-     * @return void
      * @throws KafkaException
      */
     public function produce(string $message, string $key = null, int $partition = RD_KAFKA_PARTITION_UA)
@@ -153,7 +164,7 @@ class ProducerManager
         $messageKey = md5($message->payload.$message->topic_name);
         // @codingStandardsIgnoreEnd
 
-        if ($message->err == RD_KAFKA_RESP_ERR_NO_ERROR) {
+        if (RD_KAFKA_RESP_ERR_NO_ERROR == $message->err) {
             $this->notifyEvent($messageKey);
 
             return;
@@ -173,9 +184,9 @@ class ProducerManager
     }
 
     /**
-     * @param string       $message
-     * @param integer      $partition
-     * @param string|null  $key
+     * @param string      $message
+     * @param int         $partition
+     * @param string|null $key
      *
      * @return callable
      */

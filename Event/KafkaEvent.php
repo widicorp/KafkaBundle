@@ -1,18 +1,25 @@
 <?php
 
+/*
+ * This file is part of the Widicorp KafkaBundle package.
+ *
+ * (c) Widicorp <info@widitrade.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Widicorp\KafkaBundle\Event;
 
 use Symfony\Component\EventDispatcher\Event as SymfonyEvent;
 
 /**
- * Class KafkaEvent
- * @package Widicorp\KafkaBundle\Event
- *
- * A class to send an event to say that messages were produced or consumed for monitoring
+ * Class KafkaEvent.
  */
 class KafkaEvent extends SymfonyEvent
 {
     const EVENT_NAME = 'widicorp.kafka';
+
     const EVENT_ERROR_NAME = 'widicorp.kafka.error';
 
     /**
@@ -21,14 +28,14 @@ class KafkaEvent extends SymfonyEvent
     protected $origin;
 
     /**
-     * Command start time
+     * Command start time.
      *
      * @var float
      */
     protected $executionStart;
 
     /**
-     * Command execution time
+     * Command execution time.
      *
      * @var float
      */
@@ -46,6 +53,7 @@ class KafkaEvent extends SymfonyEvent
 
     /**
      * Event constructor.
+     *
      * @param string $origin
      */
     public function __construct(string $origin)
@@ -63,7 +71,7 @@ class KafkaEvent extends SymfonyEvent
     }
 
     /**
-     * Set error code
+     * Set error code.
      *
      * @param int $errorCode
      *
@@ -77,7 +85,7 @@ class KafkaEvent extends SymfonyEvent
     }
 
     /**
-     * Return error code
+     * Return error code.
      *
      * @return int|null
      */
@@ -99,7 +107,7 @@ class KafkaEvent extends SymfonyEvent
     }
 
     /**
-     * Return reason
+     * Return reason.
      *
      * @return string|null
      */
@@ -117,7 +125,7 @@ class KafkaEvent extends SymfonyEvent
     }
 
     /**
-     * Set execution start of a request
+     * Set execution start of a request.
      *
      * @return KafkaEvent
      */
@@ -147,7 +155,7 @@ class KafkaEvent extends SymfonyEvent
     }
 
     /**
-     * Return execution time in milliseconds
+     * Return execution time in milliseconds.
      *
      * @return float
      */
