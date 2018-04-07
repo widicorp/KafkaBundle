@@ -68,9 +68,9 @@ class ConsumerManager
 
     /**
      * @param bool $autoCommit
-     * @return mixed
+     * @return \RdKafka\Message
      */
-    public function consume(bool $autoCommit = true)
+    public function consume(bool $autoCommit = true): \RdKafka\Message
     {
         return $this->consumer->consume($this->timeoutConsumingQueue);
     }

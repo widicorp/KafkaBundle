@@ -57,11 +57,16 @@ leaving it.)' . PHP_EOL . '</comment>'
                 case RD_KAFKA_RESP_ERR_NO_ERROR:
                     try {
                         $topicConsumer->getMessageHandler()->process($message);
-                    } catch (\Throwable $e) {
+                    } catch (\Throwable $exception) {
                         if ($this->logger) {
-                            $this->logError($message, $e->getMessage());
+                            $this->logError($message, $exception);
                         }
-                        $output->writeln('<question>Error processing</question>');
+                        $output->writeln(sprintf(
+                            '<error>Error processing message offset %s from partition %s in %s</error>',
+                            $message->offset,
+                            $message->partition,
+                            $message->topic_name
+                        ));
                     }
                     if ($autoCommit) {
                         $topicConsumer->commit();
@@ -119,13 +124,14 @@ leaving it.)' . PHP_EOL . '</comment>'
         $this->logger = $logger;
     }
 
-    private function logError($message, string $exception)
+    private function logError($message, \Throwable $exception)
     {
         $this->logger->{$this->getContainer()->getParameter('widicorp_kafka.logger.level')}(
-            json_encode([
-                'message' => json_encode($message),
-                'exception' => json_encode($exception),
-            ])
+            $exception->getMessage(),
+            [
+                'kafka_message' => $message,
+                'stack_trace' => $exception->getTraceAsString(),
+            ]
         );
     }
 }
